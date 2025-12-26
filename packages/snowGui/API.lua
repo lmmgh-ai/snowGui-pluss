@@ -55,6 +55,7 @@ local fun                = require(lumenGui_path .. ".libs.fun")
 local performance        = require(lumenGui_path .. ".libs.performance")
 local animation          = require(lumenGui_path .. ".libs.animation")
 local toast_manager      = require(lumenGui_path .. ".libs.toast_manager")
+local validator          = require(lumenGui_path .. ".libs.validator")
 --
 local API                = {
     view = view,
@@ -102,7 +103,8 @@ local API                = {
     debugGraph = debugGraph,
     performance = performance,
     animation = animation,
-    toast_manager = toast_manager
+    toast_manager = toast_manager,
+    validator = validator
 }
 
 

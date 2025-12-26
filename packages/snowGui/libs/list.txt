@@ -1,0 +1,18 @@
+Color 
+简陋的ARGE与HEX颜色代码互转
+Camera 
+简陋的Camera库 主要内部使用 如果你要用于游戏 建议使用其他库 hump ...
+events_system
+发布订阅模式库
+font_manger
+简单的字体管理库 主要用于控件加载不同的Size时统一管理
+nativefs
+访问外部文件的库
+fun
+主要有一些全局函数 dump 将table输出为文本
+debugGraph
+一个简单的debug库绘制帧率 内存
+CustomPrint
+简陋的android print输出库
+scene_manager
+屏幕场景库管理

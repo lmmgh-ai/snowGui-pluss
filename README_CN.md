@@ -29,6 +29,8 @@ snowGui-pluss 是一个基于 LÖVE2D (Love2D) 游戏引擎开发的跨平台 GU
 
 ## 快速开始
 
+> 💡 **新手？** 查看 [快速入门指南](docs/QUICKSTART_CN.md) 获取详细的分步教程！
+
 ### 安装
 
 1. 安装 LÖVE2D 11.4 或更高版本
@@ -315,11 +317,12 @@ end
 
 运行示例前，在 `main.lua` 中取消对应文件的注释。
 
-## 进阶文档
+## 📚 文档导航
 
-- [API 详细参考](docs/API_CN.md) - 完整的API文档
-- [使用示例](docs/EXAMPLES_CN.md) - 更多实用示例
-- [架构设计](docs/ARCHITECTURE_CN.md) - 框架架构说明
+- 🚀 [快速入门指南](docs/QUICKSTART_CN.md) - 5分钟上手教程
+- 📖 [API 详细参考](docs/API_CN.md) - 完整的API文档
+- 💡 [使用示例](docs/EXAMPLES_CN.md) - 更多实用示例
+- 🏗️ [架构设计](docs/ARCHITECTURE_CN.md) - 框架架构说明
 
 ## 调试工具
 

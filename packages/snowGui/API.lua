@@ -20,6 +20,10 @@ local input_text         = require(lumenGui_path .. ".view.input_text")
 local image              = require(lumenGui_path .. ".view.image")
 local select_button      = require(lumenGui_path .. ".view.select_button")
 local select_menu        = require(lumenGui_path .. ".view.select_menu")
+local progress_bar       = require(lumenGui_path .. ".view.progress_bar")
+local checkbox           = require(lumenGui_path .. ".view.checkbox")
+local radio_group        = require(lumenGui_path .. ".view.radio_group")
+local context_menu       = require(lumenGui_path .. ".view.context_menu")
 local dialog             = require(lumenGui_path .. ".container.dialog")
 --layout
 local line_layout        = require(lumenGui_path .. ".layout.line_layout")
@@ -48,6 +52,10 @@ local CustomPrint        = require(lumenGui_path .. ".libs.CustomPrint")
 local debugGraph         = require(lumenGui_path .. ".libs.debugGraph")
 local nativefs           = require(lumenGui_path .. ".libs.nativefs")
 local fun                = require(lumenGui_path .. ".libs.fun")
+local performance        = require(lumenGui_path .. ".libs.performance")
+local animation          = require(lumenGui_path .. ".libs.animation")
+local toast_manager      = require(lumenGui_path .. ".libs.toast_manager")
+local validator          = require(lumenGui_path .. ".libs.validator")
 --
 local API                = {
     view = view,
@@ -61,6 +69,10 @@ local API                = {
     list = list,
     slider = slider,
     image = image,
+    progress_bar = progress_bar,
+    checkbox = checkbox,
+    radio_group = radio_group,
+    context_menu = context_menu,
     --
     line_layout = line_layout,
     gravity_layout = gravity_layout,
@@ -88,7 +100,11 @@ local API                = {
     CustomPrint = CustomPrint,
     fun = fun,
     nativefs = nativefs,
-    debugGraph = debugGraph
+    debugGraph = debugGraph,
+    performance = performance,
+    animation = animation,
+    toast_manager = toast_manager,
+    validator = validator
 }
 
 

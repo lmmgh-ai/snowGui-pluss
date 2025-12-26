@@ -4,22 +4,45 @@
 
 ## 项目简介
 
-snowGui-pluss 是一个基于 LÖVE2D (Love2D) 游戏引擎开发的跨平台 GUI 框架。该框架提供了丰富的UI组件和灵活的布局系统，支持 Windows 和 Android 平台。
+snowGui-pluss 是一个基于 LÖVE2D (Love2D) 游戏引擎开发的**高性能、生产就绪**的跨平台 GUI 框架。该框架提供了丰富的UI组件、灵活的布局系统、强大的动画引擎和完善的性能优化工具。
 
 **框架原名**: lumenGui (简称 lmGui)  
 **作者**: 北极企鹅  
 **时间**: 2025
 
-## 主要特性
+## ✨ 主要特性
 
-- 🎨 **丰富的UI组件**: 按钮、文本框、滑块、列表、图片等常用控件
+### 核心功能
+- 🎨 **丰富的UI组件**: 按钮、文本框、滑块、列表、进度条、复选框、单选框等
 - 📐 **灵活的布局系统**: 线性布局、网格布局、重力布局、帧布局
-- 🎯 **容器组件**: 窗口、对话框、标签页、可折叠面板等高级容器
-- 📱 **跨平台支持**: 支持Windows桌面和Android移动平台
-- 🎮 **事件系统**: 完善的事件订阅发布机制
-- 🖱️ **触摸与鼠标**: 统一的触摸和鼠标输入处理
+- 🎯 **高级容器**: 窗口、对话框、标签页、可折叠面板、上下文菜单
+- 📱 **跨平台支持**: Windows桌面和Android移动平台
+- 🎮 **完善的事件系统**: 事件订阅发布机制、事件冒泡
+- 🖱️ **输入处理**: 统一的触摸和鼠标输入处理
 - 🎨 **主题定制**: 支持颜色、字体等样式自定义
-- 📝 **中文支持**: 内置中文字体支持
+- 📝 **中文支持**: 内置中文字体
+
+### 性能优化 🚀 (新增)
+- ⚡ **视图对象池**: 复用视图对象，减少GC压力
+- 🏷️ **脏标记系统**: 避免不必要的布局重计算
+- 🗺️ **空间分区**: 使用网格加速碰撞检测
+- 👁️ **视图剔除**: 只渲染可见区域
+- 📊 **性能监控**: 实时FPS、内存、绘制调用监控
+- 🔄 **批量渲染**: 优化渲染性能
+
+### 动画系统 🎬 (新增)
+- 💫 **多种缓动函数**: Linear, Quad, Cubic, Quart, Expo, Elastic, Back, Bounce
+- 🎯 **属性动画**: 支持任意数值属性的平滑过渡
+- 🎨 **颜色动画**: RGBA通道独立动画
+- 🛠️ **便捷函数**: fadeIn, fadeOut, slideTo, scaleTo, pulse等
+- 🎮 **动画管理**: 统一的动画生命周期管理
+
+### 新增组件 🆕
+- 📊 **进度条** (Progress Bar): 显示任务进度，支持动画
+- ☑️ **复选框** (Checkbox): 多选场景
+- 🔘 **单选按钮组** (Radio Group): 单选场景，支持垂直/水平布局
+- 📋 **上下文菜单** (Context Menu): 右键菜单，支持嵌套子菜单
+- 💬 **消息通知** (Toast): 临时提示消息，多种样式
 
 ## 系统要求
 
@@ -186,6 +209,10 @@ gui:add_view(layout)
 | `select_menu` | 下拉菜单 | 选项选择器 |
 | `list` | 列表 | 可滚动列表容器 |
 | `image` | 图片 | 图片显示组件 |
+| `progress_bar` | 进度条 ⭐ | 显示任务进度 |
+| `checkbox` | 复选框 ⭐ | 多选场景 |
+| `radio_group` | 单选按钮组 ⭐ | 单选场景 |
+| `context_menu` | 上下文菜单 ⭐ | 右键菜单 |
 
 ### 布局系统 (Layouts)
 
@@ -219,6 +246,11 @@ gui:add_view(layout)
 - **debugGraph**: 性能调试图表
 - **nativefs**: 原生文件系统访问
 - **fun**: 函数式编程工具库
+- **performance**: 性能优化工具库 ⭐
+- **animation**: 动画系统 ⭐
+- **toast_manager**: 消息通知管理器 ⭐
+
+⭐ 表示新增功能
 
 ## 布局属性
 
@@ -323,6 +355,91 @@ end
 - 📖 [API 详细参考](docs/API_CN.md) - 完整的API文档
 - 💡 [使用示例](docs/EXAMPLES_CN.md) - 更多实用示例
 - 🏗️ [架构设计](docs/ARCHITECTURE_CN.md) - 框架架构说明
+- ⚡ [性能优化指南](docs/PERFORMANCE_CN.md) - 性能优化最佳实践 ⭐
+
+## 新增功能快速体验
+
+### 使用动画系统
+
+```lua
+local animation = snowGui.animation
+
+-- 按钮点击动画
+function button:on_click()
+    -- 脉冲效果
+    animation.pulse(self, 1.2, 0.4)
+    
+    -- 滑动到新位置
+    animation.slideTo(self, 300, 200, 0.5, animation.easing.cubicOut)
+end
+```
+
+### 使用进度条
+
+```lua
+local progressBar = snowGui.progress_bar:new({
+    x = 100, y = 100,
+    width = 300, height = 30,
+    value = 0,
+    animated = true
+})
+
+-- 更新进度
+progressBar:setValue(75)
+
+function progressBar:on_value_change(value)
+    print("进度:", value .. "%")
+end
+```
+
+### 使用消息通知
+
+```lua
+local toast = snowGui.toast_manager
+
+-- 初始化
+toast:init(gui)
+
+-- 在 love.update 中更新
+function love.update(dt)
+    toast:update(dt)
+end
+
+-- 在 love.draw 中绘制
+function love.draw()
+    toast:draw()
+end
+
+-- 显示通知
+toast:success("操作成功!")
+toast:error("发生错误!")
+toast:warning("警告信息")
+toast:info("提示信息")
+```
+
+### 使用性能监控
+
+```lua
+local performance = snowGui.performance
+local monitor = performance.monitor
+
+function love.update(dt)
+    monitor:startTimer("update")
+    gui:update(dt)
+    monitor:recordMetric("updateTime", monitor:endTimer("update"))
+end
+
+-- 打印性能报告
+monitor:printReport()
+```
+
+## 📚 文档导航
+
+- 🚀 [快速入门指南](docs/QUICKSTART_CN.md) - 5分钟上手教程
+- 📖 [API 详细参考](docs/API_CN.md) - 完整的API文档
+- 💡 [使用示例](docs/EXAMPLES_CN.md) - 更多实用示例
+- 🏗️ [架构设计](docs/ARCHITECTURE_CN.md) - 框架架构说明
+- ⚡ [性能优化指南](docs/PERFORMANCE_CN.md) - 性能优化最佳实践 ⭐
 
 ## 调试工具
 

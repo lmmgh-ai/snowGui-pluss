@@ -167,7 +167,12 @@ function performance.spatialGrid:insert(view)
     end
     
     -- 计算视图占据的网格范围
-    local gx, gy = view:get_global_position and view:get_global_position() or (view.x, view.y)
+    local gx, gy
+    if view.get_global_position then
+        gx, gy = view:get_global_position()
+    else
+        gx, gy = view.x or 0, view.y or 0
+    end
     local x1, y1 = self:getCellCoords(gx, gy)
     local x2, y2 = self:getCellCoords(gx + view.width, gy + view.height)
     
@@ -213,7 +218,12 @@ function performance.culling.isInViewport(view, viewportX, viewportY, viewportW,
         return false
     end
     
-    local gx, gy = view:get_global_position and view:get_global_position() or (view.x, view.y)
+    local gx, gy
+    if view.get_global_position then
+        gx, gy = view:get_global_position()
+    else
+        gx, gy = view.x or 0, view.y or 0
+    end
     
     -- AABB碰撞检测
     return not (gx + view.width < viewportX or
